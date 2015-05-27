@@ -767,7 +767,8 @@ NSTimer *durationTimer;
                 NSString *str = subTitle;
                 r = [str boundingRectWithSize:sz options:NSStringDrawingUsesLineFragmentOrigin attributes:attr context:nil];
             } else {
-                r = [_viewText.attributedText boundingRectWithSize:sz options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+                r = [_viewText.attributedText boundingRectWithSize:sz options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+                _viewText.scrollEnabled = NO;
             }
             
             CGFloat ht = ceil(r.size.height);
