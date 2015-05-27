@@ -74,6 +74,11 @@ typedef NS_ENUM(NSInteger, SCLActionType)
  */
 @property SEL selector;
 
+/**
+ *  YES if the button should dismiss the alert. NO if not.
+ */
+@property (nonatomic, assign) BOOL shouldDismiss;
+
 /** Parse button configuration
  *
  * Parse ButtonFormatBlock and CompleteButtonFormatBlock setting custom configuration.

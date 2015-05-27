@@ -251,6 +251,23 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 - (SCLButton *)addButton:(NSString *)title actionBlock:(SCLActionBlock)action;
 
+/** Add a Button with a title and a block to handle when the button is pressed.
+ *
+ * @param title The text displayed on the button.
+ * @param shouldDismiss YES if the alert should dismiss after tapping on the button. NO if not.
+ * @param action A block of code to be executed when the button is pressed.
+ */
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss actionBlock:(SCLActionBlock)action;
+
+/** Add a Button with a title, a block to handle validation, and a block to handle when the button is pressed and validation succeeds.
+ *
+ * @param title The text displayed on the button.
+ * @param shouldDismiss YES if the alert should dismiss after tapping on the button. NO if not.
+ * @param validationBlock A block of code that will allow you to validate fields or do any other logic you may want to do to determine if the alert should be dismissed or not. Inside of this block, return a BOOL indicating whether or not the action block should be called and the alert dismissed.
+ * @param action A block of code to be executed when the button is pressed and validation passes.
+ */
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss validationBlock:(SCLValidationBlock)validationBlock actionBlock:(SCLActionBlock)action;
+
 /** Add a Button with a title, a block to handle validation, and a block to handle when the button is pressed and validation succeeds.
  *
  * @param title The text displayed on the button.
@@ -266,6 +283,15 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * @param selector A method to be executed when the button is pressed.
  */
 - (SCLButton *)addButton:(NSString *)title target:(id)target selector:(SEL)selector;
+
+/** Add a Button with a title, a target and a selector to handle when the button is pressed.
+ *
+ * @param title The text displayed on the button.
+ * @param shouldDismiss YES if the alert should dismiss after tapping on the button. NO if not.
+ * @param target Add target for particular event.
+ * @param selector A method to be executed when the button is pressed.
+ */
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss target:(id)target selector:(SEL)selector;
 
 /** Show Success SCLAlertView
  *

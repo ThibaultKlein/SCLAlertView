@@ -535,26 +535,27 @@ NSTimer *durationTimer;
 
 #pragma mark - Buttons
 
-- (SCLButton *)addButton:(NSString *)title
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss
 {
     // Update view height
     self.windowHeight += 45.0f;
-    
+
     // Add button
     SCLButton *btn = [[SCLButton alloc] init];
     btn.layer.masksToBounds = YES;
     [btn setTitle:title forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont fontWithName:_buttonsFontFamily size:_buttonsFontSize];
-    
+    btn.shouldDismiss = shouldDismiss;
+
     [_contentView addSubview:btn];
     [_buttons addObject:btn];
-    
+
     return btn;
 }
 
 - (SCLButton *)addDoneButtonWithTitle:(NSString *)title
 {
-    SCLButton *btn = [self addButton:title];
+    SCLButton *btn = [self addButton:title shouldDismiss:YES];
     
     if (_completeButtonFormatBlock != nil)
     {
@@ -568,36 +569,51 @@ NSTimer *durationTimer;
 
 - (SCLButton *)addButton:(NSString *)title actionBlock:(SCLActionBlock)action
 {
-    SCLButton *btn = [self addButton:title];
-    
+    return [self addButton:title shouldDismiss:YES actionBlock:action];
+}
+
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss actionBlock:(SCLActionBlock)action
+{
+    SCLButton *btn = [self addButton:title shouldDismiss:shouldDismiss];
+
     if (_buttonFormatBlock != nil)
     {
         btn.buttonFormatBlock = _buttonFormatBlock;
     }
-    
+
     btn.actionType = Block;
     btn.actionBlock = action;
     [btn addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     return btn;
 }
 
 - (SCLButton *)addButton:(NSString *)title validationBlock:(SCLValidationBlock)validationBlock actionBlock:(SCLActionBlock)action
 {
-    SCLButton *btn = [self addButton:title actionBlock:action];
+    return [self addButton:title shouldDismiss:YES validationBlock:validationBlock actionBlock:action];
+}
+
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss validationBlock:(SCLValidationBlock)validationBlock actionBlock:(SCLActionBlock)action
+{
+    SCLButton *btn = [self addButton:title shouldDismiss:shouldDismiss actionBlock:action];
     btn.validationBlock = validationBlock;
-    
+
     return btn;
 }
 
 - (SCLButton *)addButton:(NSString *)title target:(id)target selector:(SEL)selector
 {
-    SCLButton *btn = [self addButton:title];
+    return [self addButton:title shouldDismiss:YES target:target selector:selector];
+}
+
+- (SCLButton *)addButton:(NSString *)title shouldDismiss:(BOOL)shouldDismiss target:(id)target selector:(SEL)selector
+{
+    SCLButton *btn = [self addButton:title shouldDismiss:shouldDismiss];
     btn.actionType = Selector;
     btn.target = target;
     btn.selector = selector;
     [btn addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     return btn;
 }
 
