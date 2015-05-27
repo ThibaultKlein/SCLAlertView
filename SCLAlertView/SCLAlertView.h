@@ -150,6 +150,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, strong) UIColor *customViewColor;
 
+/** Set custom color to SCLAlertView icon background.
+ *  SCLAlertView icon custom background color.
+ */
+@property (nonatomic, strong) UIColor *customIconBackgroundViewColor;
+
 /** Set custom color to SCLAlertView background.
  *
  * SCLAlertView background custom color.

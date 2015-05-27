@@ -848,7 +848,7 @@ NSTimer *durationTimer;
     }
     
     // Alert view color and images
-    self.circleView.backgroundColor = viewColor;
+    self.circleView.backgroundColor = self.customIconBackgroundViewColor ? self.customIconBackgroundViewColor : viewColor;
     
     if (style == Waiting)
     {
