@@ -114,6 +114,7 @@ NSTimer *durationTimer;
         _circleView = [[UIView alloc] init];
         _circleViewBackground = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kCircleHeightBackground, kCircleHeightBackground)];
         _circleIconImageView = [[UIImageView alloc] init];
+        _circleIconImageView.contentMode = UIViewContentModeScaleAspectFit;
         _backgroundView = [[UIImageView alloc]initWithFrame:[self mainScreenFrame]];
         _buttons = [[NSMutableArray alloc] init];
         _inputs = [[NSMutableArray alloc] init];
