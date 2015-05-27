@@ -102,6 +102,12 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, strong) NSURL *soundURL;
 
+/** Set title text attributed format block
+ *
+ * Holds the attributed string.
+ */
+@property (nonatomic, copy) SCLAttributedFormatBlock attributedTitleFormatBlock;
+
 /** Set text attributed format block
  *
  * Holds the attributed string.
