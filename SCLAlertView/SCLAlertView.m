@@ -639,7 +639,7 @@ NSTimer *durationTimer;
     {
         NSLog(@"Unknown action type for button");
     }
-    if([self isVisible])
+    if(btn.shouldDismiss && [self isVisible])
     {
         [self hideView];
     }
@@ -772,7 +772,7 @@ NSTimer *durationTimer;
                 _viewText.scrollEnabled = NO;
             }
             
-            CGFloat ht = ceil(r.size.height);
+            CGFloat ht = ceilf(r.size.height) + 5.0f;
             if (ht < _subTitleHeight)
             {
                 self.windowHeight -= (_subTitleHeight - ht);
