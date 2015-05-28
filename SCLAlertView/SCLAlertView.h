@@ -71,6 +71,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
     Transparent
 };
 
+/**
+ *  Content View.
+ */
+@property (nonatomic, strong) UIView *contentView;
+
 /** Title Label
  *
  * The text displayed as title.

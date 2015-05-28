@@ -23,7 +23,6 @@
 @property (nonatomic, strong) UIImageView *circleIconImageView;
 @property (nonatomic, strong) UIView *circleView;
 @property (nonatomic, strong) UIView *circleViewBackground;
-@property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
@@ -114,7 +113,7 @@ NSTimer *durationTimer;
         _circleView = [[UIView alloc] init];
         _circleViewBackground = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kCircleHeightBackground, kCircleHeightBackground)];
         _circleIconImageView = [[UIImageView alloc] init];
-        _circleIconImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _circleIconImageView.contentMode = UIViewContentModeCenter;
         _backgroundView = [[UIImageView alloc]initWithFrame:[self mainScreenFrame]];
         _buttons = [[NSMutableArray alloc] init];
         _inputs = [[NSMutableArray alloc] init];
@@ -1047,8 +1046,8 @@ NSTimer *durationTimer;
 {
     _backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _backgroundView.backgroundColor = [UIColor blackColor];
-    _backgroundView.alpha = 0.7f;
-    _backgroundOpacity = 0.7f;
+    _backgroundView.alpha = 0.3f;
+    _backgroundOpacity = 0.3f;
 }
 
 - (void)makeBlurBackground
@@ -1406,10 +1405,10 @@ NSTimer *durationTimer;
     self.view.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
                                                   CGAffineTransformMakeScale(0.1f, 0.1f));
     self.view.alpha = 0.0f;
-
+    
     [UIView animateWithDuration:0.3f animations:^{
         self.backgroundView.alpha = _backgroundOpacity;
-
+        
         //To Frame
         self.view.transform = CGAffineTransformConcat(CGAffineTransformIdentity,
                                                       CGAffineTransformMakeScale(1.0f, 1.0f));
