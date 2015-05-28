@@ -76,6 +76,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, strong) UIView *contentView;
 
+/**
+ *  List of the buttons.
+ */
+@property (nonatomic, strong, readonly) NSMutableArray *buttons;
+
 /** Title Label
  *
  * The text displayed as title.
